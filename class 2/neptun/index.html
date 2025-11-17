@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neptun - Student Management System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="logo">
+                <h1>📚 Neptun</h1>
+                <p>Student Management</p>
+            </div>
+            <nav class="nav">
+                <button class="nav-item active" data-view="dashboard">
+                    <span class="icon">📊</span>
+                    Dashboard
+                </button>
+                <button class="nav-item" data-view="students">
+                    <span class="icon">👥</span>
+                    Students
+                </button>
+                <button class="nav-item" data-view="classes">
+                    <span class="icon">🎓</span>
+                    Classes
+                </button>
+                <button class="nav-item" data-view="grades">
+                    <span class="icon">📝</span>
+                    Grades
+                </button>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="header">
+                <div class="header-left">
+                    <h2 id="page-title">Dashboard</h2>
+                </div>
+                <div class="header-right">
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Search students...">
+                    </div>
+                    <div class="user-profile">
+                        <span>Admin</span>
+                        <div class="avatar">A</div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="content">
+                <!-- Dashboard View -->
+                <div id="dashboard-view" class="view active">
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon blue">👥</div>
+                            <div class="stat-info">
+                                <h3 id="total-students">0</h3>
+                                <p>Total Students</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon green">🎓</div>
+                            <div class="stat-info">
+                                <h3 id="total-classes">0</h3>
+                                <p>Total Classes</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon purple">📝</div>
+                            <div class="stat-info">
+                                <h3 id="total-grades">0</h3>
+                                <p>Total Grades</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon orange">⭐</div>
+                            <div class="stat-info">
+                                <h3 id="avg-grade">0</h3>
+                                <p>Average Grade</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="card">
+                            <h3>Recent Students</h3>
+                            <div id="recent-students" class="list"></div>
+                        </div>
+                        <div class="card">
+                            <h3>Class Distribution</h3>
+                            <div id="class-distribution" class="chart"></div>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <h3>Top Performers</h3>
+                        <div id="top-performers" class="performers-list"></div>
+                    </div>
+                </div>
+
+                <!-- Students View -->
+                <div id="students-view" class="view">
+                    <div class="view-header">
+                        <button class="btn btn-primary" id="add-student-btn">+ Add Student</button>
+                    </div>
+                    <div class="card">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Name</th>
+                                        <th>Email</th>
+                                        <th>Class</th>
+                                        <th>GPA</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="students-table"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Classes View -->
+                <div id="classes-view" class="view">
+                    <div class="view-header">
+                        <button class="btn btn-primary" id="add-class-btn">+ Add Class</button>
+                    </div>
+                    <div class="classes-grid" id="classes-grid"></div>
+                </div>
+
+                <!-- Grades View -->
+                <div id="grades-view" class="view">
+                    <div class="view-header">
+                        <button class="btn btn-primary" id="add-grade-btn">+ Add Grade</button>
+                    </div>
+                    <div class="card">
+                        <div class="table-container">
+                            <table class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Student</th>
+                                        <th>Class</th>
+                                        <th>Grade</th>
+                                        <th>Date</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="grades-table"></tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Modal for Adding/Editing -->
+    <div id="modal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Add Item</h3>
+                <button class="close-btn" id="close-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body"></div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
